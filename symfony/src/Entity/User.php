@@ -21,17 +21,26 @@ class User
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $birthDate = null;
 
-    #[ORM\Column(length: 10)]
-    private ?string $number = null;
-
     #[ORM\Column(length: 14)]
     private ?string $phone = null;
 
     #[ORM\Column(length: 15)]
     private ?string $mobile = null;
 
-    #[ORM\OneToOne(targetEntity: Address::class, inversedBy: 'users', cascade: ['persist', 'remove'])]
-    private ?Address $address = null;
+    #[ORM\Column(length: 255)]
+    private ?string $street = null;
+
+    #[ORM\Column(length: 10)]
+    private ?string $number = null;
+
+    #[ORM\Column(length: 9)]
+    private ?string $zipCode = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $city = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $state = null;
 
     public function getId(): ?int
     {
@@ -62,18 +71,6 @@ class User
         return $this;
     }
 
-    public function getNumber(): ?string
-    {
-        return $this->number;
-    }
-
-    public function setNumber(string $number): static
-    {
-        $this->number = $number;
-
-        return $this;
-    }
-
     public function getPhone(): ?string
     {
         return $this->phone;
@@ -98,14 +95,62 @@ class User
         return $this;
     }
 
-    public function getAddress(): ?Address
+    public function getStreet(): ?string
     {
-        return $this->address;
+        return $this->street;
     }
 
-    public function setAddress(Address $address): static
+    public function setStreet(string $street): static
     {
-        $this->address = $address;
+        $this->street = $street;
+
+        return $this;
+    }
+
+    public function getNumber(): ?string
+    {
+        return $this->number;
+    }
+
+    public function setNumber(string $number): static
+    {
+        $this->number = $number;
+
+        return $this;
+    }
+
+    public function getZipCode(): ?string
+    {
+        return $this->zipCode;
+    }
+
+    public function setZipCode(string $zipCode): static
+    {
+        $this->zipCode = $zipCode;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): static
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getState(): ?string
+    {
+        return $this->state;
+    }
+
+    public function setState(string $state): static
+    {
+        $this->state = $state;
 
         return $this;
     }
