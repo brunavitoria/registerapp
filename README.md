@@ -52,6 +52,6 @@ php bin/console doctrine:migrations:migrate
 7. Acesse a aplicação em seu navegador:
 
 ```
-http://localhost:8080
+http://localhost:8080/form
 ```
 
